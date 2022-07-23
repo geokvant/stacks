@@ -12,11 +12,11 @@ services:
       - /home/user/resilio-sync/dockerapps/config:/config
       - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Resilio/downloads:/downloads
       - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Resilio/data:/sync
+    networks:
+      - proxynet
     ports:
       - 8888:8888
       - 55555:55555
-    networks:
-      - proxynet
     restart: unless-stopped
     
 networks:
