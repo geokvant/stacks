@@ -12,10 +12,10 @@ services:
       - /home/user/dockerapps/radarr/config:/config
       - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Movies:/Movies #optional
       - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Downloads:/Downloads #optional
-    ports:
-      - 7878:7878
     networks:
       - proxynet
+    ports:
+      - 7878:7878
     restart: unless-stopped
     
 networks:
