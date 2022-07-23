@@ -1,0 +1,26 @@
+---
+version: "2.1"
+services:
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=44
+      - TZ=Europe/Moscow
+    volumes:
+      - /home/user/dockerapps/jellyfin/config:/config
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/data/tvshows
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Movies:/data/movies
+    devices:
+      - /dev/dri:/dev/dri #Intel HW acceleration
+    networks:
+      - proxynet
+    ports:
+      - 8096:8096
+      - 7359:7359/udp #optional
+    restart: unless-stopped
+
+networks:
+  proxynet:
+    name: MyBridge
