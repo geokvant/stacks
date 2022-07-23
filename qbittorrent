@@ -1,0 +1,28 @@
+---
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=44
+      - TZ=Europe/Moscow
+      - WEBUI_PORT=8080
+      - UMASK=000
+    volumes:
+      - /home/user/dockerapps/qbittorrent/config:/config
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Downloads:/Downloads
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/TV_Shows
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Movies:/Movies
+    networks:
+      - proxynet      
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    
+networks:
+  proxynet:
+    name: MyBridge
