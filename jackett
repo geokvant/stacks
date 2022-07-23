@@ -1,0 +1,25 @@
+---
+version: "2.1"
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=44
+      - TZ=Europe/Moscow
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS=<run options here> #optional
+    volumes:
+      - /home/user/dockerapps/jackett/config:/config
+      - /home/user/dockerapps/jackett/downloads:/downloads
+
+    networks:
+      - proxynet
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+networks:
+  proxynet:
+    name: MyBridge
