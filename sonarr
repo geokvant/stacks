@@ -1,0 +1,23 @@
+---
+version: "2.1"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=44
+      - TZ=Europe/Moscow
+    volumes:
+      - /home/user/dockerapps/sonarr/config:/config
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/TV_Shows #optional
+      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Downloads:/Downloads #optional
+    ports:
+      - 8989:8989
+    networks:
+      - proxynet
+    restart: unless-stopped
+
+networks:
+  proxynet:
+    name: MyBridge
