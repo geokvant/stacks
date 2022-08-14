@@ -12,9 +12,8 @@ services:
       - UMASK=000
     volumes:
       - /home/user/dockerapps/qbittorrent/config:/config
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Downloads:/Downloads
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/TV_Shows
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Movies:/Movies
+      - /mnt/Multimedia:/Multimedia
+      - /mnt/Multimedia/Video/Download:/Download
     networks:
       - proxynet      
     ports:
