@@ -12,8 +12,7 @@ services:
       - PLEX_CLAIM=______________ #optional
     volumes:
       - /home/user/dockerapps/plexmediaserver/config:/config
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/TV_Shows
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Movies:/Movies
+      - /mnt/Multimedia/:/Multimedia
     devices:
       - /dev/dri:/dev/dri #Intel HW acceleration
     restart: unless-stopped
