@@ -10,8 +10,7 @@ services:
       - TZ=Europe/Moscow
     volumes:
       - /home/user/dockerapps/jellyfin/config:/config
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/data/tvshows
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Movies:/data/movies
+      - /mnt/Multimedia/:/Multimedia
     devices:
       - /dev/dri:/dev/dri #Intel HW acceleration
     networks:
