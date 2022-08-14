@@ -1,0 +1,22 @@
+---
+version: "2.1"
+services:
+  ombi:
+    image: linuxserver/ombi:latest
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=44
+      - TZ=Europe/Moscow
+
+    volumes:
+      - /home/user/dockerapps/ombi/config:/config
+    networks:
+      - proxynet      
+    ports:
+      - 3579:3579
+    restart: unless-stopped
+
+networks:
+  proxynet:
+    name: MyBridge
