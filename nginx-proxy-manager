@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    networks:
+      - proxynet
+    ports:
+      - '8880:80' #check availability of port before deploy
+      - '81:81'
+      - '443:443'
+    volumes:
+      - /home/user/dockerapps/nginxproxymanager/data:/data
+      - /home/user/dockerapps/nginxproxymanager/letsencrypt:/etc/letsencrypt
+      
+networks:
+  proxynet:
+    name: MyBridge
