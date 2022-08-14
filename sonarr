@@ -10,8 +10,7 @@ services:
       - TZ=Europe/Moscow
     volumes:
       - /home/user/dockerapps/sonarr/config:/config
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/TV_Shows:/TV_Shows #optional
-      - /srv/dev-disk-by-uuid-e7671a3e-e9ec-42f4-9f24-46f4a0b7c00d/Multimedia/Downloads:/Downloads #optional
+      - /mnt/Multimedia/:/Multimedia
     networks:
       - proxynet
      ports:
