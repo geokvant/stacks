@@ -16,7 +16,7 @@ services:
     networks:
       - proxynet
     ports:
-      - 8096:8096
+      - 8196:8096
       - 7359:7359/udp #optional
     restart: unless-stopped
 
