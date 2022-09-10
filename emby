@@ -1,0 +1,24 @@
+---
+version: "2.1"
+services:
+  emby:
+    image: lscr.io/linuxserver/emby:latest
+    container_name: emby
+    environment:
+      - PUID=1000
+      - PGID=44
+      - TZ=Europe/Moscow
+    volumes:
+      - /home/user/dockerapps/emby/config:/config
+      - /mnt/Multimedia:/Multimedia
+    networks:
+      - proxynet
+    ports:
+      - 8096:8096
+    devices:
+      - /dev/dri:/dev/dri #Intel HW acceleration
+    restart: unless-stopped
+    
+networks:
+  proxynet:
+    name: MyBridge
